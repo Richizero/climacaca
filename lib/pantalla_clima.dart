@@ -1,35 +1,61 @@
 import 'package:flutter/material.dart';
-import 'pantalla_inicio.dart';
 
 class PantallaClima extends StatefulWidget {
-  const PantallaClima({super.key});
+  final String ciudad;
+  final double temperatura;
+  final double sensacionT;
+  final String descripcion;
+  final int humedad;
+  final double viento;
+
+  const PantallaClima({
+    Key? key,
+    required this.ciudad,
+    required this.temperatura,
+    required this.sensacionT,
+    required this.descripcion,
+    required this.humedad,
+    required this.viento,
+  }) : super(key: key);
 
   @override
-  State<PantallaClima> createState() => _PantallaClimaState();
+  _PantallaClimaState createState() => _PantallaClimaState();
 }
 
 class _PantallaClimaState extends State<PantallaClima> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          color: Colors.green[100],
-          height: 200.0,
-          width: 280.0,
-          child: Column(
-            children: [
-              Text("Ciudad: $ciudad", style: TextStyle(color: Colors.purple),),
-            ],
-          ),
+      appBar: AppBar(
+        title: Text('Clima en ${widget.ciudad}'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Temperatura: ${widget.temperatura}°C',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              'Sensación térmica: ${widget.sensacionT}°C',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              'Descripción: ${widget.descripcion}',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              'Humedad: ${widget.humedad}%',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              'Viento: ${widget.viento} m/s',
+              style: TextStyle(fontSize: 24),
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
-/*
-child: Column(
-
-),
-*/
